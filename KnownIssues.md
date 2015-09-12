@@ -1,0 +1,5 @@
+  * Since mod\_spdy uses a thread pool to process multiplexed requests concurrently, it is not compatible with non-thread-safe Apache modules such as `mod_php`.  If you use `mod_php` or another non-thread-safe generator, you can use it with mod\_spdy by running it with [mod\_fcgid](http://httpd.apache.org/mod_fcgid/). We have successfully run an Apache server with SPDY, PHP and WordPress by using `mod_fcgid` instead of `mod_php`.
+
+  * mod\_spdy is currently not compatible with mod\_ssl's SSLRequireSSL directive; see [issue 31](https://code.google.com/p/mod-spdy/issues/detail?id=31).  There is no known workaround at this time except to simply not use the SSLRequireSSL directive.
+
+  * Some users whose sites redirect http urls to https have experienced redirect loops after installing mod\_spdy.  If this happens, please see [issue 34](https://code.google.com/p/mod-spdy/issues/detail?id=34) for a workaround that may help.
